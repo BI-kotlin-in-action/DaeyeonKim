@@ -2,19 +2,16 @@
 fun main(args: Array<String>) {
     var size: Int
     var num: Int
-    var arr = ArrayList<Int>()
+    var arr = mutableListOf<Int>()
 
-    size = readLine()?.toInt() ?: 0
+    size = readln().toInt()
     repeat(size) {
-        num = readLine()?.toInt() ?: 0
+        num = readln().toInt()
         arr.add(num)
     }
-    size = readLine()?.toInt() ?: 0
+    size = readln().toInt()
     repeat(size) {
-        num = readLine()?.toInt() ?: 0
-        when (num) {
-            in arr -> println(1)
-            else -> println(0)
-        }
+        num = readln().toInt()
+        println(if (num in arr) 1 else 0)
     }
 }

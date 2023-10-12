@@ -8,7 +8,7 @@ fun getScore(englishName: String, teamName: String): Int {
     return ((countL + countO) * (countL + countV) * (countL + countE) * (countO + countV) * (countO + countE) * (countV + countE)) % 100
 }
 
-fun maxScoreOfTeam(englishName: String, teamNames: List<String>): String {
+fun maxScoreOfTeam(englishName: String, teamNames: MutableList<String>): String {
     var maxScore = 0
     var maxTeamName = teamNames.get(0)
     var score = 0
@@ -25,11 +25,11 @@ fun maxScoreOfTeam(englishName: String, teamNames: List<String>): String {
 }
 
 fun main(args: Array<String>) {
-    var teamNames: ArrayList<String> = arrayListOf<String>()
-    val englishName = readLine() ?: ""
-    val teamCount = readLine()?.toInt() ?: 0
+    var teamNames = mutableListOf<String>()
+    val englishName = readln()
+    val teamCount = readln().toInt()
     for (i in 0 until teamCount!!) {
-        val teamName = readLine() ?: ""
+        val teamName = readln()
         teamNames.add(teamName)
     }
     println(maxScoreOfTeam(englishName, teamNames))
