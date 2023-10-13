@@ -28,7 +28,7 @@ fun main(args: Array<String>) {
     var teamNames = mutableListOf<String>()
     val englishName = readln()
     val teamCount = readln().toInt()
-    for (i in 0 until teamCount!!) {
+    for (i in 0 until teamCount) {
         val teamName = readln()
         teamNames.add(teamName)
     }

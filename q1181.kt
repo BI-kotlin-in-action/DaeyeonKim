@@ -1,14 +1,12 @@
-// sortedSet을 이용한 코드
 fun main(args: Array<String>) {
     val n = readln().toInt()
-    var words = mutableListOf<String>()
+    var words = sortedSetOf<String>(compareBy({ it.length }, { it }))
     var word = ""
-    repeat(n ?: 0) {
+    repeat(n) {
         word = readln()
         words.add(word)
     }
-    var setWords = words.toSortedSet(compareBy<String> { it.length }.thenBy { it })
-    println(setWords)
+    println(words)
 }
 
 // mutableList의 distinct를 이용하여 정렬을 제거한 코드
