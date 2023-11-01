@@ -1,8 +1,8 @@
 fun main(args: Array<String>) {
     val size = readln().split(" ").map { it.toInt() }
     val n = readln().toInt() // 자른 횟수
-    val y = sortedSetOf(0) // 가로 자른 위치
-    val x = sortedSetOf(0) // 세로 자른 위치
+    val y = sortedSetOf(0, size[1]) // 가로 자른 위치
+    val x = sortedSetOf(0, size[0]) // 세로 자른 위치
 
     repeat(n) {
         val cut = readln().split(" ").map { it.toInt() }
@@ -11,8 +11,6 @@ fun main(args: Array<String>) {
             1 -> x.add(cut[1])
         }
     }
-    y.add(size[1])
-    x.add(size[0])
     var max = 0 // 사각형 최대 넓이
 
     for (i in 0 until y.size) {
