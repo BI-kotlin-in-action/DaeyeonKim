@@ -1,14 +1,12 @@
 
 fun main(args: Array<String>) {
-    var test = readln().toInt()
-    var balance: Int
-    var input: String
-    var pair: Boolean
+    val test = readln().toInt()
 
     repeat(test) {
-        balance = 0
-        pair = true
-        input = readln()
+        val input = readln()
+        var balance = 0
+        var pair = true
+
         for (i in input) {
             if (i == '(') {
                 balance++

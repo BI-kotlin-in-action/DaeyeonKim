@@ -27,7 +27,7 @@ fun main(args: Array<String>) {
     var input = readln().split(" ")
     val n = input.get(0).toInt()
     var targetCountryId = input.get(1).toInt()
-    var countries = ArrayList<Country>()
+    var countries = mutableListOf<Country>()
     var id: Int
     var gold: Int
     var silver: Int
@@ -41,15 +41,12 @@ fun main(args: Array<String>) {
         bronze = input.get(3).toInt()
         countries.add(Country(id, gold, silver, bronze))
     }
-    var target = countries.find { it.id == targetCountryId } ?: Country(0, 0, 0, 0)
+    val target = countries.find { it.id == targetCountryId } ?: Country(0, 0, 0, 0)
     if (target.id == 0) {
         println("target not found")
         return
     }
-    for (i in 0 until countries.size) {
-        if (target.compare(countries[i]) == -1) {
-            targetRank++
-        }
-    }
+    targetRank = countries.count { target.compare(it) == -1 }
+
     println(targetRank + 1)
 }
