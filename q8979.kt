@@ -1,5 +1,5 @@
 class Country(val id: Int, val gold: Int, val silver: Int, val bronze: Int) {
-    fun compare(other: Country): Int {
+    operator fun compareTo(other: Country): Int {
         // 금메달 비교
         if (this.gold > other.gold) {
             return 1
@@ -24,21 +24,15 @@ class Country(val id: Int, val gold: Int, val silver: Int, val bronze: Int) {
 }
 
 fun main(args: Array<String>) {
-    var input = readln().split(" ")
-    val n = input.get(0).toInt()
-    var targetCountryId = input.get(1).toInt()
-    var countries = mutableListOf<Country>()
-    var id: Int
-    var gold: Int
-    var silver: Int
-    var bronze: Int
-    var targetRank = 0
+    val (n, targetCountryId) = readln().split(" ").map { it.toInt() }
+    val countries = mutableListOf<Country>()
+
     repeat(n) {
-        input = readln().split(" ")
-        id = input.get(0).toInt()
-        gold = input.get(1).toInt()
-        silver = input.get(2).toInt()
-        bronze = input.get(3).toInt()
+        val input = readln().split(" ")
+        val id = input.get(0).toInt()
+        val gold = input.get(1).toInt()
+        val silver = input.get(2).toInt()
+        val bronze = input.get(3).toInt()
         countries.add(Country(id, gold, silver, bronze))
     }
     val target = countries.find { it.id == targetCountryId } ?: Country(0, 0, 0, 0)
@@ -46,7 +40,7 @@ fun main(args: Array<String>) {
         println("target not found")
         return
     }
-    targetRank = countries.count { target.compare(it) == -1 }
+    val targetRank = countries.count { target > it }
 
     println(targetRank + 1)
 }

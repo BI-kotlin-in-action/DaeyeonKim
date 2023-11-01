@@ -5,7 +5,6 @@ fun main(args: Array<String>) {
     repeat(test) {
         val input = readln()
         var balance = 0
-        var pair = true
 
         for (i in input) {
             if (i == '(') {
@@ -14,13 +13,10 @@ fun main(args: Array<String>) {
                 balance--
             }
             if (balance < 0) {
-                pair = false
                 break
             }
         }
-        if (balance != 0) {
-            pair = false
-        }
-        println(if (pair) "YES" else "NO")
+
+        println(if (balance == 0) "YES" else "NO")
     }
 }
